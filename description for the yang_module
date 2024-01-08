@@ -1,0 +1,22 @@
+acquire a hands-on experience with the YANG data modeling language to write a YANG model.
+the Webserver’s access log records using YANG modeling.
+The model requirements are as follows:
+• The module name is xxxxxx, where ‘xxxxxx’ is filename.
+• Each record in the access log file consists of the following fields:
+– The IP address of the client,
+– The timestamp of the request (represented in Epoch Unix time),
+– The HTTP method,
+– The resource/file requested,
+– The HTTP version,
+– The status code of the response,
+– The number of bytes transferred to the client, and
+– The client’s user agent.
+The following lines give an example of the contents of the access log file
+55.55.55.55 1692960911 GET /pics/5star2000.gif HTTP/1.1 304 0 "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+12.11.15.90 1692960914 GET /asctortf/ HTTP/1.1 200 942 "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US)"
+55.55.55.55 1692960915 POST /search HTTP/1.1 400 612 "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US)"
+73.35.93.19 1692960915 GET / HTTP/1.1 200 396 "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+81.73.14.23 1692960919 GET /pics/wpaper.gif HTTP/1.0 200 6248 "Mozilla/4.05 (Macintosh; I; PPC)"
+28.56.28.75 1692960920 POST /search HTTP/1.0 200 1563 "Mozilla/4.05 (Macintosh; I; PPC)"
+82.62.37.64 1692960922 POST /cgi-bin/newcount HTTP/1.0 201 100 "Mozilla/4.05 (Macintosh; I; PPC)"
+• The RESTCONF client can retrieve any field of each record.
