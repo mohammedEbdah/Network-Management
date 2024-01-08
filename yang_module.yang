@@ -1,0 +1,99 @@
+module ID-140552{
+	yang-version 1.1;
+	namespace "urn:example:system";
+	prefix "sys";
+	import ietf-yang-types
+	{
+		prefix yang;
+	}
+	import ietf-inet-types
+	{
+		prefix inet;
+	}
+	
+	organization "JUST";
+	contact "sbalsardia9@cit.just.edu.jo";
+	description
+		"YANG module";
+	revision 2023-12-31
+	{
+		description "rev.";
+	}
+
+  container access_log {
+    description "The Access log record";
+    config false;
+
+    list accesslog {
+      key "index";
+      description "A log entry represent single access record.";
+      
+      leaf index {
+      type uint32;
+      mandatory true;
+      }
+      leaf ip_add {
+        type inet:ipv4-address;
+        mandatory true;
+        description "The Client IP address";
+      }
+
+      leaf time_stamp {
+        type yang:counter64;
+        mandatory true;
+        description " This is the Time Stamp";
+      }
+
+      leaf Http_Method {
+        type enumeration {
+      					enum GET;
+      					enum POST;
+      					enum PUT;
+      					enum DELETE;
+      				}
+        mandatory true;
+        description "This is HTTP METHOD.";
+      }
+
+      leaf res_File{
+        type string;
+        mandatory true;
+        description "This is the RESOURCE fILE";
+      }
+
+      leaf http_Ver {
+        type enumeration {
+      					enum "HTTP/1.0";
+      					enum "HTTP/1.1";
+      					enum "HTTP/2";
+      				}
+        mandatory true;
+        description "The HTTP version used in the request.";
+      }
+
+      leaf stat_Cod {
+        type enumeration {
+      					enum OK { value 200; }
+                                        enum Created { value 201; }
+                                        enum Accepted { value 202; }
+                                        enum BadRequest { value 400; }
+                                        enum Unauthorized { value 401; }
+      	 			}
+        mandatory true;
+        description "The STATUS CODE";
+      }
+
+      leaf num_of_Bytes {
+        type yang:counter32;
+        mandatory true;
+        description "This is #Of Byets";
+      }
+
+      leaf cli_Agent {
+        type string;
+        mandatory true;
+        description "The Client Agent.";
+      }
+    }
+  }
+}

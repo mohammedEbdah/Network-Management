@@ -1,0 +1,135 @@
+ID-140552 DEFINITIONS ::= BEGIN
+
+IMPORTS
+    MODULE-IDENTITY, OBJECT-TYPE, Counter32, Gauge32, Counter64,
+    enterprises              FROM SNMPv2-SMI
+    Integer32, IpAddress, TimeTicks, mib-2,
+    NOTIFICATION-TYPE         FROM SNMPv2-SMI
+    TEXTUAL-CONVENTION, DisplayString,
+    PhysAddress, TruthValue, RowStatus,
+    TimeStamp, AutonomousType, TestAndIncr   FROM SNMPv2-TC
+    MODULE-COMPLIANCE, OBJECT-GROUP,
+    NOTIFICATION-GROUP                     FROM SNMPv2-CONF
+    snmpTraps                          FROM SNMPv2-MIB
+    IANAifType                     FROM IANAifType-MIB;
+
+
+id140552 MODULE-IDENTITY
+    LAST-UPDATED "202311220000Z"
+    ORGANIZATION "JUST_UNIVERSITY"
+    CONTACT-INFO "Mohammed Ibdah 142639"
+    DESCRIPTION ""
+    REVISION "202311220000Z"
+    DESCRIPTION ""
+    ::= { nes470 1 } --
+
+nes470 OBJECT IDENTIFIER ::= { enterprises 9000 }
+
+
+accessTable OBJECT-TYPE
+    SYNTAX      SEQUENCE OF AccessEntry
+    MAX-ACCESS  not-accessible
+    STATUS      current
+    DESCRIPTION ""
+    ::= { nes470 7 } --
+
+accessEntry OBJECT-TYPE
+    SYNTAX      AccessEntry
+    MAX-ACCESS  not-accessible
+    STATUS      current
+    DESCRIPTION ""
+    INDEX   {ipA, timeS}
+    ::= { accessTable 1 } --
+
+AccessEntry ::= SEQUENCE {
+    ipA	                       IpAddress,
+    timeS                      TimeTicks,
+    httpM                      DisplayString,
+    fileR                      DisplayString,
+    httpV                      INTEGER,
+    responseS                  INTEGER,
+    numberB		       Counter32,
+    clientU		       DisplayString
+}
+
+
+ipA OBJECT-TYPE
+    SYNTAX IpAddress
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 1 }
+
+timeS  OBJECT-TYPE
+    SYNTAX TimeTicks
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 2 }
+
+httpM OBJECT-TYPE
+    SYNTAX DisplayString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 3 }
+
+fileR OBJECT-TYPE
+    SYNTAX DisplayString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 4 }
+
+httpV  OBJECT-TYPE
+    SYNTAX INTEGER
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 5 }
+
+responseS OBJECT-TYPE
+    SYNTAX INTEGER
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 6 }
+
+numberB OBJECT-TYPE
+    SYNTAX Counter32
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 7 }
+
+clientU OBJECT-TYPE
+    SYNTAX DisplayString
+    MAX-ACCESS read-only
+    STATUS current
+    DESCRIPTION
+        ""
+    ::= { accessEntry 8 }
+    
+-- Compliance statement
+id140552C MODULE-COMPLIANCE
+    STATUS current
+    DESCRIPTION ""
+    MODULE ID-140552
+    MANDATORY-GROUPS { accessGroup }
+    ::= { id140552 2 }
+
+accessGroup OBJECT-GROUP
+    OBJECTS { ipA , timeS, httpM, fileR, httpV, responseS, numberB, clientU}
+    STATUS current
+    DESCRIPTION ""
+    ::= { id140552 3 }
+
+END
+
