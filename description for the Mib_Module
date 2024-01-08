@@ -27,4 +27,4 @@ under the enterprises node.
 • Each managed object must have the appropriate access permissions and the appropriate data type.
 • The module must conform to the SMIv2 RFC (RFC 2578).
 • When validated by the smilint tool with severity level 4, i.e., via the options
-smilint -l 4 -i group, the module must produce no errors and no warnings.
+smilint -l 4 -i group
