@@ -1,0 +1,30 @@
+full description for the Mib_Module
+acquire a hands-on experience with the SMIv2 data modeling language to write a MIB module.
+In this module, we will use the SNMP SMIv2 modeling language to write a
+SNMP MIB module that gives the ability to manage (i.e., query) a Webserver’s access log
+records of all requests processed by the server.
+The following lines give an example of the contents of the access log file
+55.55.55.55 1692960911 GET /pics/5star2000.gif HTTP/1.1 304 0 "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+12.11.15.90 1692960914 GET /asctortf/ HTTP/1.1 200 942 "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US)"
+55.55.55.55 1692960915 POST /search HTTP/1.1 400 612 "Mozilla/5.0 (Windows NT; Windows NT 10.0; en-US)"
+73.35.93.19 1692960915 GET / HTTP/1.1 200 396 "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
+81.73.14.23 1692960919 GET /pics/wpaper.gif HTTP/1.0 200 6248 "Mozilla/4.05 (Macintosh; I; PPC)"
+28.56.28.75 1692960920 POST /search HTTP/1.0 200 1563 "Mozilla/4.05 (Macintosh; I; PPC)"
+82.62.37.64 1692960922 POST /cgi-bin/newcount HTTP/1.0 201 100 "Mozilla/4.05 (Macintosh; I; PPC)"
+where each record consists of the following fields
+• The IP address of the client,
+• The timestamp of the request (represented in Epoch Unix time),
+• The HTTP method,
+• The resource/file requested,
+• The HTTP version,
+• Status code of the response,
+• The number of bytes transferred to the client, and
+• The client’s user agent.
+Now, the MIB module requirements are as follows:
+• All the managed objects descend (directly or indirectly) from node nes470(9000)
+under the enterprises node.
+• The SNMP manager can retrieve any field of each record.
+• Each managed object must have the appropriate access permissions and the appropriate data type.
+• The module must conform to the SMIv2 RFC (RFC 2578).
+• When validated by the smilint tool with severity level 4, i.e., via the options
+smilint -l 4 -i group, the module must produce no errors and no warnings.
