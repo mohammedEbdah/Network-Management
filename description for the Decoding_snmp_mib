@@ -1,0 +1,32 @@
+full description of the Decoding_snmp_mib 
+acquire applied practical knowledge about the SNMP message encoding.
+In this code,we will develop a Python utility program that decodes a SNMP
+message and displays the information it contains in a well-formatted, readable fashion. This
+we need to first master the Basic Encoding Rules (BER)
+and how different SMI data types are encoded inside SNMP messages that we covered in
+class.
+The script requirements are as follows:
+1. The script accepts a single command line argument: a name of text file that contains
+the Hex dump of the bytes of one SNMP message, e.g., msg.txt. For example,
+the script will be run as follows
+python3 xxxxxx.py msg.txt
+where xxxxxx is file name
+The format of the file contents is as follows
+30 3c 02 01 01 04 06 70 75 62 6c 69 63 a0 2f 02
+04 38 98 7d cf 02 01 00 02 01 00 30 21 30 0e 06
+0a 2b 06 01 02 01 02 02 01 06 03 05 00 30 0f 06
+0b 2b 06 01 02 01 1f 01 01 01 06 01 05 00
+2. The script will be executed on a Linux machine.
+3. The script displays on the standard output the following information for the SNMP
+message: the size of the SNMP message in bytes, the SNMP version, the community
+string, the PDU type, the request ID, the error status, and the error index.
+4. The output will be in the following format (the values below are the correct information for the SNMP message bytes above):
+Field Value
+--------------- -----------
+Size of Message 62 Bytes
+Version 2
+Community public
+PDU Type Get Request
+Request ID 949517775
+Error Status 0
+Error Index 0
