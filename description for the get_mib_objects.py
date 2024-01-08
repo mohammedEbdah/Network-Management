@@ -1,4 +1,4 @@
-the full decription for the mib document code 
+the full decription for the get_mib_objects.py code 
 for the mib document code
 To develop a network management application utilizing the SNMP operations provided via
 the Easy SNMP Python APIs.
